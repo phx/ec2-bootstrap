@@ -18,4 +18,4 @@ sed -i "${conf_line} i include global/letsencrypt.conf;" /etc/nginx/sites-enable
 nginx -t && systemctl enable nginx && systemctl start nginx
 echo '00 2 * * * root /usr/bin/certbot renew 2> /dev/null' > /etc/cron.d/certbot_renew
 echo '15 2 * * * root nginx -s reload 2> /dev/null' > /etc/cron.d/nginx_reload
-certbot certonly --agree-tos -n --webroot -w /home/www/letsencrypt -d "$SSL_DOMAIN" -m "$EMAIL"
+certbot certonly --agree-tos -n --webroot -w /var/www/letsencrypt -d "$SSL_DOMAIN" -m "$EMAIL"
